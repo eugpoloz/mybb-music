@@ -37,6 +37,11 @@ var letsMakeSomeMusic = function() {
 		return `<iframe frameborder="0" style="border:none;width:100%;height:${height}px;" width="100%" height="${height}" src="https://music.yandex.ru/iframe/#${type}/${type === 'playlist' ? `${url[2]}/${id}/show/description` : id}/${cover}/cover/"></iframe>`;
 	};
 
+	function zippyMusic(url) {
+		console.log(`domain: ${url[0]}, code: ${url[2]}`);
+		return `<embed type="application/x-shockwave-flash" src="http://api.zippyshare.com/api/mediaplayer/mediaplayer.swf" flashvars="height=20&amp;width=400&amp;file=http://${url[0]}/downloadMusic%3Fkey%3D${url[2]}%26&amp;volume=80&amp;autostart=false&amp;frontcolor=0x000000&amp;backcolor=0xffffff&amp;lightcolor=0x000000&amp;type=flv" quality="high" menu="false" wmode="transparent" allowscriptaccess="always" height="20" width="400" name="mp3player" border="0" style="margin-bottom: 6px;"/>`;
+	}
+
 	// parse everything
 	let paragraphsNodeList = document.querySelectorAll('.post-content > p');
 	paragraphsNodeList.forEach(node => {
@@ -48,16 +53,20 @@ var letsMakeSomeMusic = function() {
 		// make a switch inside forEach
 		node.querySelectorAll('.audio-player').forEach(audio => {
 			let urlArr = audio.textContent.replace(/http\:\/\//, '').replace(/https\:\/\//, '').split('/');
+			let domain = urlArr[0].replace(/w{3}(?:\S+?\.)/, '');
+			console.log(domain);
 			let newPlayer;
-			switch(urlArr[0]) {
-				case 'www.music.yandex.ru':
+			switch(domain) {
 				case 'music.yandex.ru':
 					newPlayer = yandexMusic(urlArr);
+					break;
+				case 'zippyshare.com':
+					newPlayer = zippyMusic(urlArr);
 					break;
 				default:
 					break;
 			}
-			audio.innerHTML = newPlayer;
+			audio.innerHTML = newPlayer || '<em style="color:tomato;">Это не та музыка, которую вы ищете!</em>';
 			audio.style.display = 'block';
 		});
 	});
