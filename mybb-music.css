@@ -1,0 +1,29 @@
+/* ВСТАВКА МУЗЫКИ И ПЛЕЙЛИСТОВ С ЯНДЕКС.МУЗЫКИ, ПРОСТОПЛЕЕРА И ZIPPYSHARE
+Версия 1.0 (3.0), часть 2 - стили
+Автор - грандоченька смерти @ https://github.io/eugpoloz/mybb-music
+*/
+
+.audio-popup {
+  position: absolute;
+  top: auto;
+  right: 1.4em;
+  width: 350 px;
+  margin-top: 2.05em;
+  background-color: white;
+  border: 3px solid white;
+  box-shadow: inset 0px 0px 1px 0px gray;
+  z-index: -1;
+}
+
+.audio-popup__input {
+	display: block;
+	width: 100%;
+	margin: 1em 0;
+	padding: 0.5em;
+	box-sizing: border-box;
+}
+
+.audio-popup__btn {
+	font-weight: 700;
+	text-transform: uppercase;
+}
