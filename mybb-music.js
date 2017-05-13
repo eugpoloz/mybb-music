@@ -100,6 +100,51 @@ var letsMakeSomeMusic = function() {
       audio.style.display = 'block';
     });
   });
+
+  function insertNode(el, hostEl) {
+    return hostEl.parentNode.insertBefore(el, hostEl.nextSibling);
+  }
+
+  // add THE BUTTON
+  let createBtn = () => {
+    let btn = document.createElement('td');
+    btn.id = 'button-audio';
+    btn.style = 'position:relative;background-image:url(http://s5.uploads.ru/4QUIa.gif);';
+    btn.title = "Музыка в посте";
+    btn.innerHTML = '<img src="/i/blank.gif" style="pointer-events:none;">';
+
+    return btn;
+  }
+
+  let createPopup = () => {
+    let audioPopup = document.createElement('div');
+    audioPopup.className = 'container';
+    audioPopup.id = 'audio-area';
+    audioPopup.style = `position:absolute;top:4.5em;right:1.5em;display:none;height:100px;width:500px;background-color:white;z-index:-1;`;
+    audioPopup.innerHTML = '<div><label for="audio-link-input"><strong>Вставьте ссылку на трек с Яндекс.Музыки, Pleer.net или Zippyshare:</strong></label><br/><input type="text" id="audio-link-input" name="audio-link-input" placeholder="http://"/><br/><a href="#" class="js-audio-link-insert">Вставить</a></div>';
+
+    return audioPopup;
+  }
+
+  // function on btn
+  function addMusic(e) {
+    if (e.ctrlKey || e.altKey) return bbcode('[audio]', '[/audio]');
+
+    let audioPopup = document.getElementById('audio-area');
+
+    let isVisible = audioPopup.style.display === 'block';
+    audioPopup.style.display = isVisible ? 'none' : 'block';
+    audioPopup.style.zIndex = isVisible ? -1 : 10000;
+  }
+
+  const codeBtn = document.getElementById('button-code');
+  insertNode(createBtn(), codeBtn);
+
+  const colorDiv = document.querySelector('#post .fs-box.hashelp #color-area');
+  insertNode(createPopup(), colorDiv);
+
+  const audioBtn = document.getElementById('button-audio');
+  audioBtn.addEventListener('click', addMusic, true);
 }();
 
 // КОД ВЕРСИИ 2.0
