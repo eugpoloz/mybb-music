@@ -3,6 +3,8 @@
 Автор - грандоченька смерти @ https://github.io/eugpoloz/mybb-music
 */
 
+/* LOOK, MA! NO JQUERY! */
+
 var letsMakeSomeMusic = function() {
   'use strict';
 
@@ -104,11 +106,11 @@ var letsMakeSomeMusic = function() {
     return hostEl.parentNode.insertBefore(el, hostEl.nextSibling);
   }
 
-  // add THE BUTTON
+  // add the button
   let createBtn = () => {
     let btn = document.createElement('td');
     btn.id = 'button-audio';
-    btn.style = 'position:relative;background-image:url(http://s5.uploads.ru/4QUIa.gif);';
+    btn.className = 'button-audio';
     btn.title = "Музыка в посте";
     btn.innerHTML = '<img src="/i/blank.gif" style="pointer-events:none;">';
 

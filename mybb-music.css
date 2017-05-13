@@ -3,6 +3,12 @@
 Автор - грандоченька смерти @ https://github.io/eugpoloz/mybb-music
 */
 
+/* Кнопка */
+.button-audio {
+	background-image: url(http://s5.uploads.ru/4QUIa.gif);
+}
+
+/* Попап */
 #post .container.audio-popup {
   position: absolute;
   top: auto;
