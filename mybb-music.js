@@ -120,7 +120,7 @@ var letsMakeSomeMusic = function() {
     let audioPopup = document.createElement('div');
     audioPopup.className = 'container';
     audioPopup.id = 'audio-area';
-    audioPopup.style = `position:absolute;top:4.5em;right:1.5em;display:none;height:100px;width:500px;background-color:white;z-index:-1;`;
+    audioPopup.style = `position:absolute;top:auto!important  right: 1.4em !important;display:none;height:100px;width:500px;margin-top: 2.05em;background-color:white;z-index:-1;`;
     audioPopup.innerHTML = '<div><label for="audio-link-input"><strong>Вставьте ссылку на трек с Яндекс.Музыки, Pleer.net или Zippyshare:</strong></label><br/><input type="text" id="audio-link-input" name="audio-link-input" placeholder="http://"/><br/><a href="#" class="js-audio-link-insert">Вставить</a></div>';
 
     return audioPopup;
