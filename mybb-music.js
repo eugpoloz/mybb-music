@@ -108,8 +108,7 @@ var letsMakeSomeMusic = function () {
   function insertNode(el, hostEl) {
     return hostEl.parentNode.insertBefore(el, hostEl.nextSibling);
   }
-
-  // add THE BUTTON
+  
   var createBtn = function createBtn() {
     var btn = document.createElement('td');
     btn.id = 'button-audio';
