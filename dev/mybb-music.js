@@ -1,5 +1,4 @@
-/* ВСТАВКА МУЗЫКИ И ПЛЕЙЛИСТОВ С ЯНДЕКС.МУЗЫКИ, ПРОСТОПЛЕЕРА И ZIPPYSHARE
-Версия 1.0 (3.0), часть 1 - скрипт
+/* mybb-music v1.0.0
 Автор - грандоченька смерти @ https://github.io/eugpoloz/mybb-music
 */
 
@@ -171,11 +170,10 @@ var letsMakeSomeMusic = function() {
   }
 
   const audioBtn = document.getElementById('button-audio');
-  audioBtn.addEventListener('click', addMusic, true);
-
   const insertCodeBtn = document.querySelector('.js-audio-link-insert');
   const closePopupBtn = document.querySelector('.js-audio-link-close');
 
+  audioBtn.addEventListener('click', addMusic, true);
   insertCodeBtn.addEventListener('click', popupBtnActions, true);
   closePopupBtn.addEventListener('click', popupBtnActions, true);
 }();
