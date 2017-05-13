@@ -1,8 +1,7 @@
 /* ВСТАВКА МУЗЫКИ И ПЛЕЙЛИСТОВ С ЯНДЕКС.МУЗЫКИ, ПРОСТОПЛЕЕРА И ZIPPYSHARE
-Автор - грандоченька смерти @ https://github.io/eugpoloz
-Версия 3.0
+Версия 1.0 (3.0), часть 1 - скрипт
+Автор - грандоченька смерти @ https://github.io/eugpoloz/mybb-music
 */
-// LOOK, MA, NO JQUERY
 
 var letsMakeSomeMusic = function() {
   'use strict';
@@ -118,10 +117,16 @@ var letsMakeSomeMusic = function() {
 
   let createPopup = () => {
     let audioPopup = document.createElement('div');
-    audioPopup.className = 'container';
+    audioPopup.className = 'container audio-popup';
     audioPopup.id = 'audio-area';
-    audioPopup.style = `position:absolute;top:auto!important  right: 1.4em !important;display:none;height:100px;width:500px;margin-top: 2.05em;background-color:white;z-index:-1;`;
-    audioPopup.innerHTML = '<div><label for="audio-link-input"><strong>Вставьте ссылку на трек с Яндекс.Музыки, Pleer.net или Zippyshare:</strong></label><br/><input type="text" id="audio-link-input" name="audio-link-input" placeholder="http://"/><br/><a href="#" class="js-audio-link-insert">Вставить</a></div>';
+    audioPopup.style.display = 'none';
+    audioPopup.innerHTML = `
+      <label for="audio-link-input" class="audio-popup__label">
+        <strong>Вставьте ссылку на трек с Яндекс.Музыки, Pleer.net или Zippyshare:</strong>
+        <input class="audio-popup__input" type="text" id="audio-link-input" name="audio-link-input" placeholder="http://" />
+      </label>
+      <a href="#" class="audio-popup__btn js-audio-link-insert">Вставить</a> <a href="#" class="audio-popup__btn js-audio-link-close">Закрыть</a>
+    `;
 
     return audioPopup;
   }
