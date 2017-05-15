@@ -3,5 +3,20 @@
   "version": "1.0.0",
   "devDependencies": {
     "babel-cli": "^6.0.0"
+  },
+  "dependencies": {
+    "babel-preset-env": "^1.4.0"
+  },
+  "babel": {
+	  "presets": [
+	    ["env", {
+	      "targets": {
+	        "browsers": ["last 2 versions", "safari >= 7"]
+	      }
+	    }]
+	  ]
+  },
+  "scripts": {
+  	"build": "babel dev/mybb-music.js --out-file mybb-music.js"
   }
 }
