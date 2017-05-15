@@ -1,10 +1,12 @@
-/* mybb-music v1.0.0
-Автор - грандоченька смерти @ https://github.io/eugpoloz/mybb-music
+'use strict';
+
+/* 
+   mybb-music v1.0.0
+   by грандоченька смерти @ https://github.io/eugpoloz/mybb-music
+   @license MIT
 */
 
 var letsMakeSomeMusic = function () {
-  'use strict';
-
   var maxH = 417;
 
   function yandexMusic(url) {
@@ -72,7 +74,7 @@ var letsMakeSomeMusic = function () {
     return '<object ' + wH + '><param name="movie" value="' + link + '"></param><embed src="' + link + '" ' + wH + ' type="application/x-shockwave-flash"></embed></object>';
   }
 
-  var paragraphsNodeList = document.querySelectorAll('.post-content > p');
+  var paragraphsNodeList = document.querySelectorAll('.post-content > *:not(.post-sig)');
   paragraphsNodeList.forEach(function (node) {
     if (node.textContent.includes('[audio]')) {
       var newHtml = node.innerHTML.replace(/\[audio\]/gi, '<div class="audio-player" style="display:none;max-height:' + maxH + 'px;overflow:hidden;">').replace(/\[\/audio\]/gi, '</div>');
@@ -108,11 +110,11 @@ var letsMakeSomeMusic = function () {
   function insertNode(el, hostEl) {
     return hostEl.parentNode.insertBefore(el, hostEl.nextSibling);
   }
-  
+
   var createBtn = function createBtn() {
     var btn = document.createElement('td');
     btn.id = 'button-audio';
-    btn.style = 'position:relative;background-image:url(http://s5.uploads.ru/4QUIa.gif);';
+    btn.className = 'button-audio';
     btn.title = "Музыка в посте";
     btn.innerHTML = '<img src="/i/blank.gif" style="pointer-events:none;">';
 
@@ -124,7 +126,7 @@ var letsMakeSomeMusic = function () {
     popup.className = 'container audio-popup';
     popup.id = 'audio-area';
     popup.style.display = 'none';
-    popup.innerHTML = '\n      <label for="audio-link-input" class="audio-popup__label">\n        <strong>Вставьте ссылку на трек с Яндекс.Музыки, Простоплеера или zippyshare.com:</strong>\n        <input class="audio-popup__input" type="text" id="audio-link-input" name="audio-link-input" placeholder="http://" />\n      </label>\n      <a href="#" class="audio-popup__btn js-audio-link-insert">Вставить</a>&nbsp;&nbsp;&nbsp;<a href="#" class="audio-popup__btn js-audio-link-close">Закрыть</a>\n    ';
+    popup.innerHTML = '\n      <label for="audio-link-input" class="audio-popup__label">\n        <strong>\u0412\u0441\u0442\u0430\u0432\u044C\u0442\u0435 \u0441\u0441\u044B\u043B\u043A\u0443 \u043D\u0430 \u0442\u0440\u0435\u043A \u0441 \u042F\u043D\u0434\u0435\u043A\u0441.\u041C\u0443\u0437\u044B\u043A\u0438, \u041F\u0440\u043E\u0441\u0442\u043E\u043F\u043B\u0435\u0435\u0440\u0430 \u0438\u043B\u0438 zippyshare.com:</strong>\n        <input class="audio-popup__input" type="text" id="audio-link-input" name="audio-link-input" placeholder="http://" />\n      </label>\n      <a href="#" class="audio-popup__btn js-audio-link-insert">\u0412\u0441\u0442\u0430\u0432\u0438\u0442\u044C</a>&nbsp;&nbsp;&nbsp;<a href="#" class="audio-popup__btn js-audio-link-close">\u0417\u0430\u043A\u0440\u044B\u0442\u044C</a>\n    ';
 
     return popup;
   };
@@ -162,12 +164,7 @@ var letsMakeSomeMusic = function () {
     return input.value = '';
   }
 
-  var audioBtn = document.getElementById('button-audio');
-  audioBtn.addEventListener('click', addMusic, true);
-
-  var insertCodeBtn = document.querySelector('.js-audio-link-insert');
-  var closePopupBtn = document.querySelector('.js-audio-link-close');
-
-  insertCodeBtn.addEventListener('click', popupBtnActions, true);
-  closePopupBtn.addEventListener('click', popupBtnActions, true);
+  document.getElementById('button-audio').addEventListener('click', addMusic, true);
+  document.querySelector('.js-audio-link-insert').addEventListener('click', popupBtnActions, true);
+  document.querySelector('.js-audio-link-close').addEventListener('click', popupBtnActions, true);
 }();

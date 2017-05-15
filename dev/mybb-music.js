@@ -1,12 +1,12 @@
-/* mybb-music v1.0.0
-Автор - грандоченька смерти @ https://github.io/eugpoloz/mybb-music
+/* 
+   mybb-music v1.0.0
+   by грандоченька смерти @ https://github.io/eugpoloz/mybb-music
+   @license MIT
 */
 
 /* LOOK, MA! NO JQUERY! */
 
 var letsMakeSomeMusic = function() {
-  'use strict';
-
   var maxH = 417;
 
   function yandexMusic(url) {
@@ -67,7 +67,7 @@ var letsMakeSomeMusic = function() {
   }
 
   // parse everything
-  let paragraphsNodeList = document.querySelectorAll('.post-content > p');
+  let paragraphsNodeList = document.querySelectorAll('.post-content > *:not(.post-sig)');
   paragraphsNodeList.forEach(node => {
     if (node.textContent.includes('[audio]')) {
       let newHtml = node.innerHTML.replace(/\[audio\]/gi, `<div class="audio-player" style="display:none;max-height:${maxH}px;overflow:hidden;">`).replace(/\[\/audio\]/gi, '</div>');
@@ -169,11 +169,7 @@ var letsMakeSomeMusic = function() {
     return input.value = '';
   }
 
-  const audioBtn = document.getElementById('button-audio');
-  const insertCodeBtn = document.querySelector('.js-audio-link-insert');
-  const closePopupBtn = document.querySelector('.js-audio-link-close');
-
-  audioBtn.addEventListener('click', addMusic, true);
-  insertCodeBtn.addEventListener('click', popupBtnActions, true);
-  closePopupBtn.addEventListener('click', popupBtnActions, true);
+  document.getElementById('button-audio').addEventListener('click', addMusic, true);
+  document.querySelector('.js-audio-link-insert').addEventListener('click', popupBtnActions, true);
+  document.querySelector('.js-audio-link-close').addEventListener('click', popupBtnActions, true);
 }();
