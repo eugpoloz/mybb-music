@@ -3,22 +3,29 @@
   "version": "1.0.0",
   "private": true,
   "devDependencies": {
-    "react-scripts": "1.0.7",
-    "babel-cli": "^6.0.0"
+    "babel-cli": "^6.0.0",
+    "react-scripts": "1.0.7"
   },
   "dependencies": {
+    "babel-preset-env": "^1.4.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "babel-preset-env": "^1.4.0"
+    "styled-components": "^2.0.0"
   },
   "babel": {
     "comments": false,
     "presets": [
-      ["env", {
-        "targets": {
-          "browsers": ["last 2 versions", "safari >= 7"]
+      [
+        "env",
+        {
+          "targets": {
+            "browsers": [
+              "last 2 versions",
+              "safari >= 7"
+            ]
+          }
         }
-      }]
+      ]
     ]
   },
   "scripts": {
