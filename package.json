@@ -1,6 +1,7 @@
 {
   "name": "mybb-music",
   "version": "1.0.0",
+  "homepage": "https://eugpoloz.github.io/mybb-music",
   "private": true,
   "devDependencies": {
     "babel-cli": "^6.0.0",
@@ -8,6 +9,7 @@
   },
   "dependencies": {
     "babel-preset-env": "^1.4.0",
+    "gh-pages": "^1.0.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "styled-components": "^2.0.0"
@@ -29,10 +31,12 @@
     ]
   },
   "scripts": {
-    "run": "babel dev/mybb-music.js --out-file docs/mybb-music.js",
+    "babel": "babel dev/mybb-music.js --out-file build/mybb-music.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn run build && babel dev/mybb-music.js --out-file build/mybb-music.js",
+    "deploy": "gh-pages -d build"
   }
 }
