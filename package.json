@@ -1,6 +1,6 @@
 {
   "name": "mybb-music",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "devDependencies": {
     "babel-cli": "^6.0.0"
   },
@@ -10,11 +10,17 @@
   "babel": {
     "comments": false,
     "presets": [
-      ["env", {
-        "targets": {
-          "browsers": ["last 2 versions", "safari >= 7"]
+      [
+        "env",
+        {
+          "targets": {
+            "browsers": [
+              "last 2 versions",
+              "safari >= 7"
+            ]
+          }
         }
-      }]
+      ]
     ]
   },
   "scripts": {
